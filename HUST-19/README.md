@@ -1,6 +1,6 @@
 # HUST-19 1.0 (released on Aug 18, 2020)
 
-(*italics mine*)
+(*italics mine, non-italics from source*)
 
 (*source: http://ictcf.biocuckoo.cn/HUST-19.php*)
 
