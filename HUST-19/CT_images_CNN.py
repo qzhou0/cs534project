@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from collections import ChainMap
 from keras.utils.np_utils import to_categorical
 from keras.models import load_model  
-from keras.utils import plot_model
+from keras.utils.vis_utils import plot_model
 from keras import Sequential
 from keras.layers import Conv2D,MaxPooling2D,Flatten,Softmax,Activation,Dense,Dropout
 from keras.callbacks import Callback,ModelCheckpoint
@@ -15,7 +15,13 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import roc_auc_score
 from sklearn.metrics import roc_curve
 from keras import optimizers
+from tensorflow.keras.optimizers import Adam
 
+import tensorflow as tf
+
+gpu_devices = tf.config.experimental.list_physical_devices('GPU')
+for device in gpu_devices:
+    tf.config.experimental.set_memory_growth(device, True)
 
 def corp_margin(img2):
     img2=np.asarray(img2)
@@ -96,7 +102,7 @@ def VGG_Simple():
     model.add(Dense(32,activation='relu'))
     model.add(Dropout(0.5))
     model.add(Dense(3,activation='softmax'))
-    model.compile(optimizer=optimizers.Adam(lr=0.001,decay=0.05),loss='categorical_crossentropy',metrics=['accuracy'])
+    model.compile(optimizer=Adam(learning_rate=0.001,decay=0.05),loss='categorical_crossentropy',metrics=['accuracy'])
     return model
 
 
@@ -123,16 +129,20 @@ target_dir3='nCT/'
 target_list1=[target_dir1+file for file in os.listdir(target_dir1)]
 target_list2=[target_dir2+file for file in os.listdir(target_dir2)]
 target_list3=[target_dir3+file for file in os.listdir(target_dir3)]
+
 target_list=target_list1+target_list2+target_list3
 y_list=to_categorical(np.concatenate(np.array([[0]*len(target_list1),
                                                [1]*len(target_list2),
-                                               [2]*len(target_list3)])),3)
+                                               [2]*len(target_list3)],dtype=object)),3)
+
 X=np.array([read_ct_img_bydir(file) for file in target_list])[:,:,:,np.newaxis]
+
 X_train, X_val, y_train, y_val = train_test_split(X, y_list, test_size=0.1, stratify=y_list)
-checkpoint = ModelCheckpoint(f'Model/CT.model',save_weights_only = False, monitor='val_loss', verbose=1,save_best_only=True,mode='auto',period=1)
+
+checkpoint = ModelCheckpoint(f'Model/CT.model',save_weights_only = False, monitor='val_loss', verbose=1,save_best_only=True,mode='auto',save_freq=1)
 RocAuc = RocAucEvaluation(validation_data=(X_val,y_val))
 model=VGG_Simple()
-history = model.fit(X_train, y_train, epochs=300, batch_size=64, class_weight = 'auto', validation_data=(X_val, y_val), callbacks=[checkpoint,RocAuc],verbose=1)
+history = model.fit(X_train, y_train, epochs=300, batch_size=64, class_weight = None, validation_data=(X_val, y_val), callbacks=[checkpoint,RocAuc],verbose=1)
 
 
 
