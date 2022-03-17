@@ -1,6 +1,7 @@
 # HUST-19 1.0 (released on Aug 18, 2020)
 
 (*italics mine*)
+
 (*source: http://ictcf.biocuckoo.cn/HUST-19.php*)
 
 Hybrid-learning for UnbiaSed predicTion of COVID-19 patients (HUST-19) is a novel framework, which integrated the highly heterogeneous data (CT and CF data) and accurately predicted patients with COVID-19 pneumonia. 
@@ -12,11 +13,15 @@ For training models to predict mortality outcomes, the Cohort 1 and 2 are merged
 1. Lung parenchyma.py
    The code is used for lung parenchyma extraction.
 2. CT_images_CNN.py
+
     The code is used for individual image-based CNN model training.
+    
     *need to download the zip files named NiCT	pCT	nCT from source, extract the folder inside, and put them in same folder level as the CT_images_CNN.py file, e.g. ./NiCT/NiCT1.jpg.*
 
 3. CT_Patient_CNN.py
+
     The code is used for patient-centered CNN model training.
+    
     *not sure what each filename refers to*
 
 4. CF_DNN.py
