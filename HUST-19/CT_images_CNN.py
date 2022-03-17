@@ -103,6 +103,7 @@ def VGG_Simple():
     model.add(Dropout(0.5))
     model.add(Dense(3,activation='softmax'))
     model.compile(optimizer=Adam(learning_rate=0.001,decay=0.05),loss='categorical_crossentropy',metrics=['accuracy'])
+    #originally optimizers.Adam, and lr= instead of learning_rate = 
     return model
 
 
@@ -143,6 +144,6 @@ checkpoint = ModelCheckpoint(f'Model/CT.model',save_weights_only = False, monito
 RocAuc = RocAucEvaluation(validation_data=(X_val,y_val))
 model=VGG_Simple()
 history = model.fit(X_train, y_train, epochs=300, batch_size=64, class_weight = None, validation_data=(X_val, y_val), callbacks=[checkpoint,RocAuc],verbose=1)
-
+#originally class_weight = 'auto' here
 
 
