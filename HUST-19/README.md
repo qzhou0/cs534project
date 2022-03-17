@@ -1,6 +1,7 @@
 # HUST-19 1.0 (released on Aug 18, 2020)
 
-(source: http://ictcf.biocuckoo.cn/HUST-19.php)
+(*italics mine*)
+(*source: http://ictcf.biocuckoo.cn/HUST-19.php*)
 
 Hybrid-learning for UnbiaSed predicTion of COVID-19 patients (HUST-19) is a novel framework, which integrated the highly heterogeneous data (CT and CF data) and accurately predicted patients with COVID-19 pneumonia. 
 For training the individual image-based model in HUST-19, we manually labelled 19,685 CT slices, including 5705 non-informative CT (NiCT), 4001 positive CT (pCT) and 9979 negative CT (nCT) slices, randomly selected from 61 and 43 patients with and without COVID-19 pneumonia.
