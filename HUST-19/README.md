@@ -22,7 +22,7 @@ For training models to predict mortality outcomes, the Cohort 1 and 2 are merged
 
     The code is used for patient-centered CNN model training.
     
-    *not sure what each filename refers to*
+    *not sure what each filename refers to; might need to download each of the patient zips from the source website*
 
 4. CF_DNN.py
     The code is used for patient-centered DNN model training.
