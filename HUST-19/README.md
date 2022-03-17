@@ -1,4 +1,4 @@
-#HUST-19 1.0 (released on Aug 18, 2020)
+# HUST-19 1.0 (released on Aug 18, 2020)
 
 (source: http://ictcf.biocuckoo.cn/HUST-19.php)
 
@@ -7,28 +7,28 @@ For training the individual image-based model in HUST-19, we manually labelled 1
 For training models to predict morbidity outcomes, we used 197,068 CT slices and 127 types of CF data from 222 control, 438 Type I, and 211 Type II patients in the Cohort 1. We use the Cohort 2 as an independent dataset to test HUST-19, which still exhibits a promising accuracy. In the Cohort 2, there are 91,430 CT slices and CF data from 106 controls, 182 Type I patients, and 63 Type II patients.
 For training models to predict mortality outcomes, the Cohort 1 and 2 are merged with 169,933 CT slices and CF data from 662 cured and 57 deceased cases, due to data limitation. All computational models of HUST-19 are made available under a CC BY-NC 4.0 license.
 
-#The description of HUST-19 source code
+## The description of HUST-19 source code
 1. Lung parenchyma.py
-The code is used for lung parenchyma extraction.
+   The code is used for lung parenchyma extraction.
 2. CT_images_CNN.py
-The code is used for individual image-based CNN model training.
-* need to download the zip files named NiCT	pCT	nCT from source, extract the folder inside, and put them in same folder level as the CT_images_CNN.py file, e.g. ./NiCT/NiCT1.jpg. *
+    The code is used for individual image-based CNN model training.
+    *need to download the zip files named NiCT	pCT	nCT from source, extract the folder inside, and put them in same folder level as the CT_images_CNN.py file, e.g. ./NiCT/NiCT1.jpg.*
 
 3. CT_Patient_CNN.py
-The code is used for patient-centered CNN model training.
-* not sure what each filename refers to*
+    The code is used for patient-centered CNN model training.
+    *not sure what each filename refers to*
 
 4. CF_DNN.py
-The code is used for patient-centered DNN model training.
+    The code is used for patient-centered DNN model training.
 5. Final_PLR.py
-The code is used for the integration of predictions from CT images and CFs.
+    The code is used for the integration of predictions from CT images and CFs.
 6. HUST-19.py
-The code is the prediction program of HUST-19.
+    The code is the prediction program of HUST-19.
 
-#The Demo input file of HUST-19
+## The Demo input file of HUST-19
 We provide a CT folder named "Demo_Patient_324_CT" and a file named "Demo_Patient_324_CF.txt" as input examples for CT and CF, respectively. 
 
-#The models in HUST-19
+## The models in HUST-19
 1. CT_images.model 
 The model is used for the CT images prediction.
 2. CT_Morbidity.model 
@@ -44,7 +44,7 @@ The model is used for COVID-19 patients mortality outcome prediction based on CF
 7. HUST-19_Mortality.model 
 The model is used for COVID-19 patients mortality outcome prediction by integrated the CT and CF data.
 
-#The dependencies of HUST-19
+## The dependencies of HUST-19
 To use HUST-19 in your application developments, you must have installed the following dependencies:
 Python 3.7
 OpenCV-python 3.4.2
