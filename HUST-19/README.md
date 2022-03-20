@@ -17,6 +17,8 @@ For training models to predict mortality outcomes, the Cohort 1 and 2 are merged
     The code is used for individual image-based CNN model training.
     
     *need to download the zip files named NiCT	pCT	nCT from source, extract the folder inside, and put them in same folder level as the CT_images_CNN.py file, e.g. ./NiCT/NiCT1.jpg.*
+    
+    *after changing class_weight='auto' to None, wasn't able to get a good accuracy*
 
 3. CT_Patient_CNN.py
 
