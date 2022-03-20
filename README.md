@@ -2,6 +2,7 @@
 
 HUST-19 from http://ictcf.biocuckoo.cn/HUST-19.php
 
+CT-selection, https://github.com/mr7495/COVID-CT-Code
 
 ### Phase 3
 
